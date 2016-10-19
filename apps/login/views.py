@@ -15,7 +15,7 @@ def process(request):
         messages.error(request, 'Email address is invalid.')
         error=1
     if not userManager.existingEmail(request.POST['email']):
-        messages.error(request, 'Email addres already exists.')
+        messages.error(request, 'Email address already exists.')
         error=1
     if not len(request.POST['pass1'])>7:
         messages.error(request,'Password must be at least 8 characters')
@@ -34,7 +34,7 @@ def process(request):
 def login(request):
     error=0
     if not userManager.validEmail(str(request.POST['email'])):
-        messages.error(request, 'A vaild email is required to login.')
+        messages.error(request,'A valid email is required.')
         error=1
     if userManager.existingEmail(str(request.POST['email'])):
         messages.add_message(request, messages.ERROR, 'Email or password is incorrect.')
