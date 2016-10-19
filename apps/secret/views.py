@@ -29,7 +29,7 @@ def delete(request, s_id):
 
 def like(request, s_id):
     if 'id' not in request.session:
-        message.error(request, 'Please log in to continue.')
+        messages.error(request, 'Please log in to continue.')
         return redirect(reverse('login:index'))
     Secrets.objects.addLike(request.session['id'],s_id)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
@@ -37,7 +37,7 @@ def like(request, s_id):
 
 def popular(request):
     if 'id' not in request.session:
-        message.error(request, 'Please log in to continue ')
+        messages.error(request, 'Please log in to continue ')
         return redirect(reverse('login:index'))
     context={
         'data':User.objects.filter(id=request.session['id'])[0],
