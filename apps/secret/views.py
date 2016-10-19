@@ -8,7 +8,7 @@ from ..login.models import User
 
 def secret(request):
     if 'id' not in request.session:
-        message.error(request, 'Please log in to continue.')
+        messages.error(request, 'Please log in to continue.')
         return redirect(reverse('login:index'))
     context={
         'data':User.objects.filter(id=request.session['id'])[0],
