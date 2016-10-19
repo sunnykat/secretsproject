@@ -34,7 +34,7 @@ def process(request):
 def login(request):
     error=0
     if not userManager.validEmail(str(request.POST['email'])):
-        message.error(request, 'A vaild email is required to login.')
+        messages.error(request, 'A vaild email is required to login.')
         error=1
     if userManager.existingEmail(str(request.POST['email'])):
         messages.add_message(request, messages.ERROR, 'Email or password is incorrect.')
